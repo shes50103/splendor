@@ -1,5 +1,6 @@
 <template>
   <div class="card bg-light" style="width: 18rem;" v-for="card in cards">
+    {{ card.user }}
     <img src="" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title" :class="card.value"> {{ card.value }} </h5>
@@ -7,7 +8,7 @@
       <div v-for="(value, key) in card.costs" class="cost" :class="key" >
         {{ value}}
       </div>
-      <a href="#" class="btn btn-primary">BUY</a>
+      <btn class="btn btn-primary" @click="buyCard" >BUY</btn>
     </div>
   </div>
 </template>
@@ -53,15 +54,21 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    buyCard(e){
+      window.a = this
+      console.log("this", this)
+      console.log(e.target)
+    }
   }
-
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .card {
-      color: white;
+  color: white;
 
   .cost {
     width: 50px;
