@@ -1,6 +1,7 @@
 <template>
   <h1> My board</h1>
-      {{ myPoint }}
+  {{ myPoint }}
+
 
   <div class="card bg-light" style="width: 18rem;" v-for="card in cardList">
     {{ card.user}}
@@ -44,7 +45,7 @@ export default {
       set(value){
         this.$store.commit('cardList', value);
       }
-    }
+    },
   }
 }
 </script>

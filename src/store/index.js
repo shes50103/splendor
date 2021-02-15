@@ -57,11 +57,44 @@ export default createStore({
           red: 2
         }
       },
+    ],
+    pointList: [
+      {
+        id: "p01",
+        user: null,
+        value: 'green'
+      },
+      {
+        id: "p02",
+        user: null,
+        value: 'green'
+      },
+      {
+        id: "p03",
+        user: null,
+        value: 'green'
+      },
+      {
+        id: "p04",
+        user: null,
+        value: 'red'
+      },
+      {
+        id: "p05",
+        user: null,
+        value: 'red'
+      },
     ]
   },
   getters: {
     forSaleCardList(state) {
       return state.cardList.filter( (e) => e.user === null)
+    },
+    forSalePointList(state) {
+      return state.pointList.filter( (e) => e.user === null)
+    },
+    cartPointList(state) {
+      return state.pointList.filter( (e) => e.user === 'cart')
     },
     myCardList(state) {
       return state.cardList.filter( (e) => e.user === 1)
