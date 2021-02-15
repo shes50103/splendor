@@ -1,14 +1,14 @@
 <template>
-  <div class="card bg-light" style="width: 18rem;" v-for="card in cards">
-    {{ card.user }}
+  <h1> For Sale</h1>
+  <div class="card bg-light" style="width: 18rem;" v-for="card in cardList">
+    {{ card.user}}
     <img src="" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title" :class="card.value"> {{ card.value }} </h5>
-
       <div v-for="(value, key) in card.costs" class="cost" :class="key" >
         {{ value}}
       </div>
-      <btn class="btn btn-primary" @click="buyCard" >BUY</btn>
+      <btn class="btn btn-primary" @click="buyCard(card.id)" >BUY</btn>
     </div>
   </div>
 </template>
@@ -17,49 +17,27 @@
 export default {
   data() {
     return {
-      cards: [
-        {
-          id: 'c001',
-          user: null,
-          display: false,
-          value: "green",
-          costs: {
-            blue: 2,
-            red: 2
-          }
-        },
-        {
-          id: 'c002',
-          user: null,
-          display: false,
-          value: "black",
-          costs: {
-            white: 1,
-            blue: 1,
-            green: 1,
-            red: 1
-          }
-        },
-        {
-          id: 'c003',
-          user: null,
-          display: false,
-          value: "blue",
-          costs: {
-            white: 2,
-            green: 1,
-            red: 1,
-            black: 1
-          }
-        }
-      ]
     }
   },
   methods: {
     buyCard(e){
-      window.a = this
-      console.log("this", this)
-      console.log(e.target)
+      this.cardList = this.cardList.map((card) => {
+        if(card.id == e){
+          card.user = 1
+        }
+        return card
+      })
+
+    }
+  },
+  computed: {
+    cardList: {
+      get(){
+        return this.$store.getters.forSaleCardList;
+      },
+      set(value){
+        this.$store.commit('cardList', value);
+      }
     }
   }
 }
@@ -68,7 +46,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .card {
-  color: white;
+  color: gray;
 
   .cost {
     width: 50px;
