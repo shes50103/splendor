@@ -36,7 +36,27 @@ export default createStore({
           red: 1,
           black: 1
         }
-      }
+      },
+      {
+        id: 'c004',
+        user: null,
+        display: false,
+        value: "green",
+        costs: {
+          blue: 21,
+          red: 2
+        }
+      },
+      {
+        id: 'c005',
+        user: null,
+        display: false,
+        value: "green",
+        costs: {
+          blue: 21,
+          red: 2
+        }
+      },
     ]
   },
   getters: {

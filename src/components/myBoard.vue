@@ -26,12 +26,15 @@ export default {
   },
   computed: {
     myPoint() {
+      let r = _.groupBy(this.$store.getters.myCardList, 'value')
 
-
-      window.c = this.$store.getters.myCardList
       return {
-        green: 1,
-        red: 2
+        green: r['green'] && r['green'].length,
+        red:  r['red'] && r['red'].length,
+        blue:  r['blue'] && r['blue'].length,
+        black: r['black'] && r['black'].length,
+        white: r['white'] && r['white'].length,
+        gold: r['gold'] && r['gold'].length,
       }
     },
     cardList: {
