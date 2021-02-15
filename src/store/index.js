@@ -57,3 +57,5 @@ export default createStore({
   modules: {
   }
 })
+
+// ['a', 'b', 'a', 'c'].filter((e) => { true})

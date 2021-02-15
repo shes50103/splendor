@@ -1,16 +1,16 @@
 <template>
-  <h1> For Sale</h1>
+  <h1> My board</h1>
+      {{ myPoint }}
+
   <div class="card bg-light" style="width: 18rem;" v-for="card in cardList">
     {{ card.user}}
     {{ card.id}}
-
     <img src="" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title" :class="card.value"> {{ card.value }} </h5>
       <div v-for="(value, key) in card.costs" class="cost" :class="key" >
         {{ value}}
       </div>
-      <btn class="btn btn-primary" @click="buyCard(card.id)" >BUY</btn>
     </div>
   </div>
 </template>
@@ -22,21 +22,21 @@ export default {
     }
   },
   methods: {
-    buyCard(e){
-      this.cardList = this.$store.state.cardList.map((card) => {
-        if(card.id == e){
-          card.user = 1
-        }
-        console.log("card: ", card)
-        return card
-      })
 
-    }
   },
   computed: {
+    myPoint() {
+
+
+      window.c = this.$store.getters.myCardList
+      return {
+        green: 1,
+        red: 2
+      }
+    },
     cardList: {
       get(){
-        return this.$store.getters.forSaleCardList;
+        return this.$store.getters.myCardList;
       },
       set(value){
         this.$store.commit('cardList', value);
