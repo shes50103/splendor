@@ -1,4 +1,5 @@
 <template>
+<div class="my-board">
   <h1> My board</h1>
   {{ myPoint }}
 
@@ -14,6 +15,8 @@
       </div>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>

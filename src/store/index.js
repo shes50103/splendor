@@ -98,6 +98,9 @@ export default createStore({
     },
     myCardList(state) {
       return state.cardList.filter( (e) => e.user === 1)
+    },
+    myPointList(state) {
+      return state.pointList.filter( (e) => e.user === 1)
     }
   },
   mutations: {

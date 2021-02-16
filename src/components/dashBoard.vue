@@ -1,4 +1,5 @@
 <template>
+<div class="dash-board">
   <div class="diamond-block bg-light">
     <div v-for="point, key in availbalePoint" :class="[key, {clickable: true}]" class="diamond" @click="addPointToCart(key)">
       {{point}}
@@ -26,6 +27,9 @@
       <btn class="btn btn-primary" @click="buyCard(card.id)" >BUY</btn>
     </div>
   </div>
+
+</div>
+
 </template>
 
 <script>

@@ -1,6 +1,8 @@
 <template>
-  <dashBoard/>
-  <myBoard/>
+  <div class="app">
+    <dashBoard/>
+    <myBoard/>
+  </div>
 </template>
 
 <script>
@@ -20,5 +22,11 @@ export default {
 </script>
 
 <style lang="scss">
+
+.app {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 </style>
