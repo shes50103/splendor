@@ -1,18 +1,17 @@
 <template>
 <div class="my-board">
   <h1> My board</h1>
-  {{ myPoint }}
-
-
-  <div class="card bg-light" style="width: 18rem;" v-for="card in cardList">
-    {{ card.user}}
-    {{ card.id}}
-    <img src="" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title" :class="card.value"> {{ card.value }} </h5>
-      <div v-for="(value, key) in card.costs" class="cost" :class="key" >
-        {{ value}}
+  <div class="card-list">
+    <div class="card bg-light" v-for="card in myCardList">
+      <div class="card-value" :class="card.value">  </div>
+      <div class="card-cost-list">
+        <div v-for="(value, key) in card.costs" class="card-cost" :class="key"></div>
       </div>
+    </div>
+  </div>
+
+  <div class="point-list bg-light">
+    <div v-for="point in myPointLis" :class="[point.value, {clickable: true}]" class="point">
     </div>
   </div>
 </div>
@@ -41,7 +40,7 @@ export default {
         gold: r['gold'] && r['gold'].length,
       }
     },
-    cardList: {
+    myCardList: {
       get(){
         return this.$store.getters.myCardList;
       },
@@ -49,48 +48,19 @@ export default {
         this.$store.commit('cardList', value);
       }
     },
+    myPointLis: {
+      get(){
+        console.log('this.$store.getters.myPointList', this.$store.getters.myPointList)
+        return this.$store.getters.myPointList;
+      },
+      set(value){
+        this.$store.commit('pointList', value);
+      }
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.card {
-  color: gray;
-
-  .cost {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    margin: 1px;
-    border: 1px solid black;
-  }
-
-  .green {
-    background-color: green
-  }
-
-  .red {
-    background-color: red
-  }
-
-  .blue {
-    background-color: blue
-  }
-
-  .black {
-    background-color: black;
-    color: white;
-  }
-
-  .white {
-    background-color: white;
-    color: black;
-  }
-}
-
 </style>

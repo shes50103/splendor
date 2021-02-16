@@ -93,6 +93,9 @@ export default createStore({
     forSalePointList(state) {
       return state.pointList.filter( (e) => e.user === null)
     },
+    cartCardList(state) {
+      return state.cardList.filter( (e) => e.user === 'cart')
+    },
     cartPointList(state) {
       return state.pointList.filter( (e) => e.user === 'cart')
     },
@@ -113,5 +116,3 @@ export default createStore({
   modules: {
   }
 })
-
-// ['a', 'b', 'a', 'c'].filter((e) => { true})

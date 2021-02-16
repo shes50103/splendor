@@ -1,33 +1,22 @@
 <template>
 
 <div class="dash-board">
-  <h1> For Sale</h1>
+  <h1>For Sale</h1>
 
-  <div class="card-board">
+  <div class="card-list">
     <div class="card bg-light clickable" v-for="card in cardList" @click="buyCard(card.id)">
-      <div class="card-value" :class="card.value"> {{ card.value }} </div>
+      <div class="card-value" :class="card.value"> </div>
       <div class="card-cost-list">
-        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" >
-          {{ value }}
-        </div>
+        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" > {{ value }} </div>
       </div>
-        <!-- <btn class="btn btn-primary" @click="buyCard(card.id)" >BUY</btn> -->
     </div>
   </div>
 
-
-  <div class="diamond-block bg-light">
-    <div v-for="point, key in availbalePoint" :class="[key, {clickable: true}]" class="diamond" @click="addPointToCart(key)">
+  <div class="point-list bg-light">
+    <div v-for="point, key in availbalePoint" :class="[key, {clickable: true}]" class="point" @click="addPointToCart(key)">
       {{point}}
     </div>
   </div>
-
-  <div class="diamond-block bg-light">
-    <div v-for="point in cartPointList" :class="[point.value, {clickable: true}]" class="diamond">
-    </div>
-  </div>
-
-  <btn class="btn btn-primary" @click="buyPoint" >BUY</btn>
 </div>
 
 </template>
@@ -47,11 +36,7 @@ export default {
         return card
       })
     },
-    buyPoint(){
-      this.cartPointList.forEach((e)=>{
-        e.user=1;
-      })
-    },
+
     addPointToCart(key){
       window.r = this.pointList
       for(let i = 0 ; i< this.pointList.length ;i++ ){
@@ -79,10 +64,7 @@ export default {
         this.$store.commit('pointList', value);
       }
     },
-    cartPointList() {
-      console.log('this.$store.getters.cartPointList', this.$store.getters.cartPointList)
-      return this.$store.getters.cartPointList;
-    },
+
     availbalePoint(){
       window.p = this.pointList
       let r = _.groupBy(this.pointList, 'value')
@@ -105,61 +87,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.diamond-block {
-  display: flex;
-  flex-direction: row;
-
-  .diamond {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    margin: 1px;
-    border: 1px solid black;
-  }
-
-
-  .white {
-    background-color: white;
-    color: black;
-  }
-}
-
-
-.clickable {
-  cursor: pointer;
-}
-
-.card-board {
-  color: gray;
-  height: 500px;
-  overflow: scroll;
-
-  .card-value {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-  }
-
-  .card-cost-list {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .card-cost {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    margin: 1px;
-    border: 1px solid black;
-  }
-}
-
 </style>
