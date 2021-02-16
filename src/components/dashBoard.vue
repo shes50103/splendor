@@ -12,20 +12,20 @@
     </div>
   </div>
 
-  <div class="point-list bg-light">
-    <div v-for="point, key in groupPoint" :class="[key, {clickable: true}]" class="point" @click="addPointToCart(key)">
-      {{point}}
-    </div>
-  </div>
+  <dashPointStack/>
 </div>
-
 </template>
 
 <script>
+import dashPointStack from './dashPointStack.vue'
+
 export default {
   data() {
     return {
     }
+  },
+  components: {
+    dashPointStack
   },
   methods: {
     buyCard(e){
@@ -64,7 +64,6 @@ export default {
       }
     },
     groupPoint(){
-      // console.log("a", this.$store.getters.groupforSalePointList)
       return this.$store.getters.groupforSalePointList;
     }
   }
