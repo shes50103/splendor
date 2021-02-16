@@ -29,7 +29,7 @@ export default {
 .app {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 
   .green {
     background-color: green
@@ -59,22 +59,6 @@ export default {
 
   .point-1 {
     border: 10px solid red;
-  }
-
-  .point-1::after {
-    content: "";
-    top: 10px;
-    left: 10px;
-
-     width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    margin: 1px;
-    border: 1px solid black;
   }
 }
 
@@ -133,6 +117,46 @@ export default {
     background-color: white;
     color: black;
   }
+}
+
+
+.point-stack {
+  position: relative;
+  width: 60px;
+}
+
+.box {
+  position: absolute;
+  border-radius: 6px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 11px;
+  transform: perspective(250px) rotateX(45deg);
+  // box-shadow: 1px 3px 0px green;
+}
+
+
+.box1 {
+  top: 0px;
+}
+
+.box2 {
+  top: -2px;
+}
+
+.box3 {
+  top: -4px;
+}
+
+.box4 {
+  top: -6px;
+}
+
+.box5 {
+  top: -8px;
 }
 
 </style>

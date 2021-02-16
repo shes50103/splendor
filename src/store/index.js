@@ -60,29 +60,154 @@ export default createStore({
     ],
     pointList: [
       {
-        id: "p01",
+        id: "g01",
         user: null,
         value: 'green'
       },
       {
-        id: "p02",
+        id: "g02",
         user: null,
         value: 'green'
       },
       {
-        id: "p03",
+        id: "g03",
         user: null,
         value: 'green'
       },
       {
-        id: "p04",
+        id: "g04",
+        user: null,
+        value: 'green'
+      },
+      {
+        id: "g05",
+        user: null,
+        value: 'green'
+      },
+      {
+        id: "r01",
         user: null,
         value: 'red'
       },
       {
-        id: "p05",
+        id: "r02",
         user: null,
         value: 'red'
+      },
+      {
+        id: "r03",
+        user: null,
+        value: 'red'
+      },
+      {
+        id: "r04",
+        user: null,
+        value: 'red'
+      },
+      {
+        id: "r05",
+        user: null,
+        value: 'red'
+      },
+      {
+        id: "b01",
+        user: null,
+        value: 'blue'
+      },
+      {
+        id: "b02",
+        user: null,
+        value: 'blue'
+      },
+      {
+        id: "b03",
+        user: null,
+        value: 'blue'
+      },
+      {
+        id: "b04",
+        user: null,
+        value: 'blue'
+      },
+      {
+        id: "b05",
+        user: null,
+        value: 'blue'
+      },
+      {
+        id: "d01",
+        user: null,
+        value: 'black'
+      },
+      {
+        id: "d02",
+        user: null,
+        value: 'black'
+      },
+      {
+        id: "d03",
+        user: null,
+        value: 'black'
+      },
+      {
+        id: "d04",
+        user: null,
+        value: 'black'
+      },
+      {
+        id: "d05",
+        user: null,
+        value: 'black'
+      },
+      {
+        id: "w01",
+        user: null,
+        value: 'white'
+      },
+      {
+        id: "w02",
+        user: null,
+        value: 'white'
+      },
+      {
+        id: "w03",
+        user: null,
+        value: 'white'
+      },
+      {
+        id: "w04",
+        user: null,
+        value: 'white'
+      },
+      {
+        id: "w05",
+        user: null,
+        value: 'white'
+      },
+      {
+        id: "go01",
+        user: null,
+        value: 'gold'
+      },
+      {
+        id: "go02",
+        user: null,
+        value: 'gold'
+      },
+      {
+        id: "go03",
+        user: null,
+        value: 'gold'
+      },
+      {
+        id: "go04",
+        user: null,
+        value: 'gold'
+      },
+      {
+        id: "go05",
+        user: null,
+        value: 'gold'
       },
     ]
   },
