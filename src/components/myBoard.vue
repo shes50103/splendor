@@ -11,19 +11,11 @@
   </div>
 
   <div class="point-list bg-light">
-    <!-- <div v-for="point, key in groupPoint" :class="key" class="clickable point">
-      {{point}}
-    </div> -->
-
     <template  v-for="point, key in groupPoint">
        <component :is="pp(point)" :color="key"></component>
     </template>
   </div>
 </div>
-
-
-
-
 
 </template>
 
@@ -101,7 +93,6 @@ export default {
       }
     },
     groupPoint(){
-      console.log('a', this.$store.getters.groupMyPointList)
       return this.$store.getters.groupMyPointList;
     }
   }

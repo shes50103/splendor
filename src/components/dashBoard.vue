@@ -38,7 +38,6 @@ export default {
     },
 
     addPointToCart(key){
-      window.r = this.pointList
       for(let i = 0 ; i< this.pointList.length ;i++ ){
         if(this.pointList[i].value === key){
           this.pointList[i].user = 'cart';
