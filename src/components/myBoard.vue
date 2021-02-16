@@ -11,7 +11,7 @@
   </div>
 
   <div class="point-list bg-light">
-    <div v-for="point, key in groupPoint" :class="key" class="clickable point">
+    <div v-for="point, key in groupPoint" :class="pointNumberClass(point), key" class="clickable point">
       {{point}}
     </div>
   </div>
@@ -26,9 +26,12 @@ export default {
     }
   },
   methods: {
-
+    pointNumberClass(n){
+      return "point-" + n
+    },
   },
   computed: {
+
     myPoint() {
       let r = _.groupBy(this.$store.getters.myCardList, 'value')
 

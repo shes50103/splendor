@@ -56,6 +56,26 @@ export default {
     background-color: white;
     color: black;
   }
+
+  .point-1 {
+    border: 10px solid red;
+  }
+
+  .point-1::after {
+    content: "";
+    top: 10px;
+    left: 10px;
+
+     width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    margin: 1px;
+    border: 1px solid black;
+  }
 }
 
 .clickable {
