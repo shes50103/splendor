@@ -11,7 +11,8 @@
   </div>
 
   <div class="point-list bg-light">
-    <div v-for="point in myPointLis" :class="[point.value, {clickable: true}]" class="point">
+    <div v-for="point, key in groupPoint" :class="key" class="clickable point">
+      {{point}}
     </div>
   </div>
 </div>
@@ -50,12 +51,15 @@ export default {
     },
     myPointLis: {
       get(){
-        console.log('this.$store.getters.myPointList', this.$store.getters.myPointList)
         return this.$store.getters.myPointList;
       },
       set(value){
         this.$store.commit('pointList', value);
       }
+    },
+    groupPoint(){
+      console.log('a', this.$store.getters.groupMyPointList)
+      return this.$store.getters.groupMyPointList;
     }
   }
 }

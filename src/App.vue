@@ -97,6 +97,7 @@ export default {
   flex-direction: row;
 
   .point {
+    // position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 12px;

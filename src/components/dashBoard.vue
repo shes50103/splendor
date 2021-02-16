@@ -13,7 +13,7 @@
   </div>
 
   <div class="point-list bg-light">
-    <div v-for="point, key in availbalePoint" :class="[key, {clickable: true}]" class="point" @click="addPointToCart(key)">
+    <div v-for="point, key in groupPoint" :class="[key, {clickable: true}]" class="point" @click="addPointToCart(key)">
       {{point}}
     </div>
   </div>
@@ -56,7 +56,7 @@ export default {
         this.$store.commit('cardList', value);
       }
     },
-   pointList: {
+    pointList: {
       get(){
         return this.$store.getters.forSalePointList;
       },
@@ -64,22 +64,9 @@ export default {
         this.$store.commit('pointList', value);
       }
     },
-
-    availbalePoint(){
-      window.p = this.pointList
-      let r = _.groupBy(this.pointList, 'value')
-      window.r = r
-
-      let obj1 = {
-        green: r['green'] && r['green'].length || 0,
-        red: r['red'] && r['red'].length || 0,
-        blue: r['blue'] && r['blue'].length || 0,
-        black: r['black'] && r['black'].length || 0,
-        white: r['white'] && r['white'].length || 0,
-        gold: r['gold'] && r['gold'].length || 0,
-      }
-
-      return obj1
+    groupPoint(){
+      // console.log("a", this.$store.getters.groupforSalePointList)
+      return this.$store.getters.groupforSalePointList;
     }
   }
 }

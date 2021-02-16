@@ -104,6 +104,31 @@ export default createStore({
     },
     myPointList(state) {
       return state.pointList.filter( (e) => e.user === 1)
+    },
+    groupforSalePointList(state, getters){
+      let r = _.groupBy(getters.forSalePointList, 'value')
+
+      return {
+        green: r['green'] && r['green'].length || 0,
+        red: r['red'] && r['red'].length || 0,
+        blue: r['blue'] && r['blue'].length || 0,
+        black: r['black'] && r['black'].length || 0,
+        white: r['white'] && r['white'].length || 0,
+        gold: r['gold'] && r['gold'].length || 0,
+      }
+    },
+
+    groupMyPointList(state, getters){
+      let r = _.groupBy(getters.myPointList, 'value')
+
+      return {
+        green: r['green'] && r['green'].length || 0,
+        red: r['red'] && r['red'].length || 0,
+        blue: r['blue'] && r['blue'].length || 0,
+        black: r['black'] && r['black'].length || 0,
+        white: r['white'] && r['white'].length || 0,
+        gold: r['gold'] && r['gold'].length || 0,
+      }
     }
   },
   mutations: {
