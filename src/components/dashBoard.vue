@@ -1,5 +1,21 @@
 <template>
+
 <div class="dash-board">
+  <h1> For Sale</h1>
+
+  <div class="card-board">
+    <div class="card bg-light clickable" v-for="card in cardList" @click="buyCard(card.id)">
+      <div class="card-value" :class="card.value"> {{ card.value }} </div>
+      <div class="card-cost-list">
+        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" >
+          {{ value }}
+        </div>
+      </div>
+        <!-- <btn class="btn btn-primary" @click="buyCard(card.id)" >BUY</btn> -->
+    </div>
+  </div>
+
+
   <div class="diamond-block bg-light">
     <div v-for="point, key in availbalePoint" :class="[key, {clickable: true}]" class="diamond" @click="addPointToCart(key)">
       {{point}}
@@ -12,22 +28,6 @@
   </div>
 
   <btn class="btn btn-primary" @click="buyPoint" >BUY</btn>
-
-
-  <h1> For Sale</h1>
-  <div class="card bg-light" style="width: 18rem;" v-for="card in cardList">
-    {{ card.user}}
-    {{ card.id}}
-    <img src="" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title" :class="card.value"> {{ card.value }} </h5>
-      <div v-for="(value, key) in card.costs" class="cost" :class="key" >
-        {{ value}}
-      </div>
-      <btn class="btn btn-primary" @click="buyCard(card.id)" >BUY</btn>
-    </div>
-  </div>
-
 </div>
 
 </template>
@@ -42,7 +42,7 @@ export default {
     buyCard(e){
       this.cardList = this.$store.state.cardList.map((card) => {
         if(card.id == e){
-          card.user = 1
+          card.user = 'cart'
         }
         return card
       })
@@ -121,9 +121,6 @@ export default {
     border: 1px solid black;
   }
 
-  .clickable {
-    cursor: pointer;
-  }
 
   .white {
     background-color: white;
@@ -131,10 +128,28 @@ export default {
   }
 }
 
-.card {
-  color: gray;
 
-  .cost {
+.clickable {
+  cursor: pointer;
+}
+
+.card-board {
+  color: gray;
+  height: 500px;
+  overflow: scroll;
+
+  .card-value {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  .card-cost-list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .card-cost {
     width: 50px;
     height: 50px;
     border-radius: 12px;
@@ -145,32 +160,6 @@ export default {
     margin: 1px;
     border: 1px solid black;
   }
-}
-
-.green {
-  background-color: green
-}
-
-.red {
-  background-color: red
-}
-
-.blue {
-  background-color: blue
-}
-
-  .gold {
-  background-color: gold
-}
-
-.black {
-  background-color: black;
-  color: white;
-}
-
-.white {
-  background-color: white;
-  color: black;
 }
 
 </style>

@@ -29,4 +29,30 @@ export default {
   justify-content: space-between;
 }
 
+.green {
+  background-color: green
+}
+
+.red {
+  background-color: red
+}
+
+.blue {
+  background-color: blue
+}
+
+.gold {
+  background-color: gold
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
+
+.white {
+  background-color: white;
+  color: black;
+}
+
 </style>
