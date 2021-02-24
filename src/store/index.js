@@ -9,7 +9,7 @@ export default createStore({
         display: false,
         value: "green",
         costs: {
-          blue: 1,
+          blue: 2,
           red: 1
         }
       },

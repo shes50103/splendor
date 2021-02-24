@@ -6,7 +6,7 @@
   <div class="card-list">
     <div :class="card.value" class="card clickable" v-for="card in cardList" @click="addCardToCart(card.id)">
       <div class="card-cost-list">
-        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" ></div>
+        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" > {{value}}</div>
       </div>
     </div>
   </div>

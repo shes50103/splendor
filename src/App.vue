@@ -67,7 +67,7 @@ export default {
 }
 
 .card-list {
-  color: gray;
+  color: white;
   height: 500px;
   width: 300px;
   overflow: scroll;
@@ -84,13 +84,12 @@ export default {
   }
 
   .card-cost {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     border-radius: 12px;
-    line-height: 10px;
+    line-height: 17px;
     text-align: center;
-    font-size: 20px;
-    color: white;
+    font-size: 12px;
     margin: 1px;
     border: 1px solid black;
   }
