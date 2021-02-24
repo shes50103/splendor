@@ -33,24 +33,7 @@ export default {
       return this.$store.getters.groupMyCardList
     },
     myTotalPoint() {
-      let obj1 = this.$store.getters.groupMyPointList
-      let obj2 = this.$store.getters.groupMyCardList
-
-      const mergeFruits = data => {
-        const result = {};
-        data.forEach(basket => {
-          for (let [key, value] of Object.entries(basket)) {
-            if (result[key]) {
-              result[key] += value;
-            } else {
-              result[key] = value;
-            }
-          }
-        });
-        return result;
-      };
-
-      return mergeFruits([obj1, obj2])
+      return this.$store.getters.myTotalPoint;
     },
     myCardList: {
       get(){

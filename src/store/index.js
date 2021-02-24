@@ -1,18 +1,5 @@
 import { createStore } from 'vuex'
 
-window.groupData = function(data){
-
-  let r = _.groupBy(data, 'value')
-
-  return {
-    green: r['green'] && r['green'].length || 0,
-    red:  r['red'] && r['red'].length || 0,
-    blue:  r['blue'] && r['blue'].length || 0,
-    black: r['black'] && r['black'].length || 0,
-    white: r['white'] && r['white'].length || 0,
-    gold: r['gold'] && r['gold'].length || 0,
-  }
-}
 export default createStore({
   state: {
     cardList: [
@@ -22,8 +9,8 @@ export default createStore({
         display: false,
         value: "green",
         costs: {
-          blue: 21,
-          red: 2
+          blue: 1,
+          red: 1
         }
       },
       {
@@ -44,7 +31,7 @@ export default createStore({
         display: false,
         value: "blue",
         costs: {
-          white: 2,
+          white: 1,
           green: 1,
           red: 1,
           black: 1
@@ -56,8 +43,8 @@ export default createStore({
         display: false,
         value: "green",
         costs: {
-          blue: 21,
-          red: 2
+          blue: 1,
+          red: 1
         }
       },
       {
@@ -66,8 +53,8 @@ export default createStore({
         display: false,
         value: "green",
         costs: {
-          blue: 21,
-          red: 2
+          blue: 1,
+          red: 1
         }
       },
     ],
@@ -251,6 +238,27 @@ export default createStore({
     },
     groupMyCardList(state, getters){
       return groupData(getters.myCardList)
+    },
+    myTotalPoint(state, getters){
+      let obj1 = getters.groupMyPointList
+      let obj2 = getters.groupMyCardList
+
+      const mergeFruits = data => {
+        const result = {};
+        data.forEach(basket => {
+          for (let [key, value] of Object.entries(basket)) {
+            if (result[key]) {
+              result[key] += value;
+            } else {
+              result[key] = value;
+            }
+          }
+        });
+        return result;
+      };
+
+      return mergeFruits([obj1, obj2])
+
     }
   },
   mutations: {
@@ -263,3 +271,18 @@ export default createStore({
   modules: {
   }
 })
+
+
+window.groupData = function(data){
+
+  let r = _.groupBy(data, 'value')
+
+  return {
+    green: r['green'] && r['green'].length || 0,
+    red:  r['red'] && r['red'].length || 0,
+    blue:  r['blue'] && r['blue'].length || 0,
+    black: r['black'] && r['black'].length || 0,
+    white: r['white'] && r['white'].length || 0,
+    gold: r['gold'] && r['gold'].length || 0,
+  }
+}

@@ -4,7 +4,7 @@
   <h1>For Sale</h1>
 
   <div class="card-list">
-    <div :class="card.value" class="card clickable" v-for="card in cardList" @click="buyCard(card.id)">
+    <div :class="card.value" class="card clickable" v-for="card in cardList" @click="addCardToCart(card.id)">
       <div class="card-cost-list">
         <div v-for="(value, key) in card.costs" class="card-cost" :class="key" ></div>
       </div>
@@ -27,9 +27,21 @@ export default {
     dashPointStack
   },
   methods: {
-    buyCard(e){
+    ableBuy(e){
+      let myTotalPoint = this.$store.getters.myTotalPoint;
+
+      for (const [key, value] of Object.entries(e.costs)) {
+        if(myTotalPoint[key] < value){
+          return false;
+        }
+      }
+
+      return true
+    },
+    addCardToCart(e){
       this.cardList = this.$store.state.cardList.map((card) => {
-        if(card.id == e){
+        if(card.id == e && this.ableBuy(card)){
+
           card.user = 'cart'
         }
         return card
