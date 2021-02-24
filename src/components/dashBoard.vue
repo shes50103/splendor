@@ -4,10 +4,9 @@
   <h1>For Sale</h1>
 
   <div class="card-list">
-    <div class="card bg-light clickable" v-for="card in cardList" @click="buyCard(card.id)">
-      <div class="card-value" :class="card.value"> </div>
+    <div :class="card.value" class="card clickable" v-for="card in cardList" @click="buyCard(card.id)">
       <div class="card-cost-list">
-        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" > {{ value }} </div>
+        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" ></div>
       </div>
     </div>
   </div>

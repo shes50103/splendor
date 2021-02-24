@@ -1,6 +1,6 @@
 <template>
   <div class="point-list bg-light">
-    <template  v-for="point, key in source">
+    <template  v-for="point, key in groupPoint">
        <component :is="numberToComponent(point)" :color="key"></component>
     </template>
   </div>
@@ -25,9 +25,6 @@ export default {
     p4,
     p5,
   },
-  props: [
-    'source'
-  ],
   methods: {
     numberToComponent(n){
       switch (n) {
@@ -51,6 +48,11 @@ export default {
       }
     }
   },
+  computed: {
+    groupPoint(){
+      return this.$store.getters.groupMyPointList;
+    },
+  }
 }
 </script>
 

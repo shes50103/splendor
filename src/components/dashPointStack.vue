@@ -60,7 +60,7 @@ export default {
     groupPoint(){
       return this.$store.getters.groupforSalePointList;
     },
-        pointList: {
+    pointList: {
       get(){
         return this.$store.getters.forSalePointList;
       },

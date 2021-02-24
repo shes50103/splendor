@@ -72,22 +72,22 @@ export default {
   width: 300px;
   overflow: scroll;
 
-  .card-value {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-  }
-
   .card-cost-list {
     display: flex;
     flex-direction: row;
+    background-color: #fff;
+    width: 90px;
+  }
+
+  .card {
+    height: 50px;
   }
 
   .card-cost {
-    width: 50px;
-    height: 50px;
+    width: 10px;
+    height: 10px;
     border-radius: 12px;
-    line-height: 50px;
+    line-height: 10px;
     text-align: center;
     font-size: 20px;
     color: white;
@@ -141,22 +141,27 @@ export default {
 
 .box1 {
   top: 0px;
+  right: 0px;
 }
 
 .box2 {
-  top: -2px;
+  top: -4px;
+  right: 1px;
 }
 
 .box3 {
-  top: -4px;
+  top: -8px;
+  right: 2px;
 }
 
 .box4 {
-  top: -6px;
+  top: -12px;
+  right: 3px;
 }
 
 .box5 {
-  top: -8px;
+  top: -16px;
+  right: 4px;
 }
 
 </style>

@@ -3,11 +3,9 @@
   <h1> Cart </h1>
 
   <div class="card-list">
-    <div class="card bg-light clickable" v-for="card in cartCardList">
-      <div class="card-value" :class="card.value"> </div>
+    <div :class="card.value" class="card clickable" v-for="card in cartCardList">
       <div class="card-cost-list">
         <div v-for="(value, key) in card.costs" class="card-cost" :class="key" >
-          {{ value }}
         </div>
       </div>
     </div>
@@ -18,7 +16,7 @@
     </div>
   </div>
 
-  <btn class="btn btn-primary" @click="buy" >BUY</btn>
+  <btn class="btn btn-primary" @click="buy">BUY</btn>
 </div>
 
 </template>
@@ -47,7 +45,6 @@ export default {
     cartCardList() {
       return this.$store.getters.cartCardList;
     },
-
   }
 }
 </script>
