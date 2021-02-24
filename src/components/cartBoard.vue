@@ -29,12 +29,34 @@ export default {
   },
   methods: {
     buy(){
+      // console.log("groupMyPointList", this.$store.getters.groupMyPointList)
+      // console.log("groupMyCardList", this.$store.getters.groupMyCardList)
+      // console.log("myTotalPoint", this.$store.getters.myTotalPoint)
+      var myPointList = this.$store.getters.myPointList
+      // console.log("myPointList", this.$store.getters.myPointList)
+
       this.cartPointList.forEach((e)=>{
         e.user=1;
       })
 
-            this.cartCardList.forEach((e)=>{
+      this.cartCardList.forEach((e)=>{
         e.user=1;
+
+
+        for (const [key, value] of Object.entries(e.costs)) {
+          console.log("key", key, "value", value)
+          for (let el of myPointList) {
+            if (el.value == key) {
+              value = value - 1
+              el.user = null
+
+              if(value == 0){
+                break
+              }
+            }
+          }
+        }
+
       })
     },
   },

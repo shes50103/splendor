@@ -86,12 +86,12 @@ export default createStore({
       },
       {
         id: "r01",
-        user: null,
+        user: 1,
         value: 'red'
       },
       {
         id: "r02",
-        user: null,
+        user: 1,
         value: 'red'
       },
       {
@@ -111,12 +111,12 @@ export default createStore({
       },
       {
         id: "b01",
-        user: null,
+        user: 1,
         value: 'blue'
       },
       {
         id: "b02",
-        user: null,
+        user: 1,
         value: 'blue'
       },
       {
