@@ -30,55 +30,25 @@ export default {
   },
   computed: {
     myCardListPoint() {
-      let r = _.groupBy(this.$store.getters.myCardList, 'value')
-      return {
-        green: r['green'] && r['green'].length || 0,
-        red:  r['red'] && r['red'].length || 0,
-        blue:  r['blue'] && r['blue'].length || 0,
-        black: r['black'] && r['black'].length || 0,
-        white: r['white'] && r['white'].length || 0,
-        gold: r['gold'] && r['gold'].length || 0,
-      }
+      return this.$store.getters.groupMyCardList
     },
     myTotalPoint() {
-      let r = _.groupBy(this.$store.getters.myCardList, 'value')
-      let p = _.groupBy(this.$store.getters.myPointList, 'value')
-
-      let obj1 =  {
-        green: r['green'] && r['green'].length || 0,
-        red:  r['red'] && r['red'].length || 0,
-        blue:  r['blue'] && r['blue'].length || 0,
-        black: r['black'] && r['black'].length || 0,
-        white: r['white'] && r['white'].length || 0,
-        gold: r['gold'] && r['gold'].length || 0,
-      }
-
-      let obj2 = {
-        green: p['green'] && p['green'].length || 0,
-        red:  p['red'] && p['red'].length || 0,
-        blue:  p['blue'] && p['blue'].length || 0,
-        black: p['black'] && p['black'].length || 0,
-        white: p['white'] && p['white'].length || 0,
-        gold: p['gold'] && p['gold'].length || 0,
-      }
-
+      let obj1 = this.$store.getters.groupMyPointList
+      let obj2 = this.$store.getters.groupMyCardList
 
       const mergeFruits = data => {
-        const result = {}; //(1)
-        data.forEach(basket => { //(2)
-          for (let [key, value] of Object.entries(basket)) { //(3)
-            if (result[key]) { //(4)
-              result[key] += value; //(5)
-            } else { //(6)
+        const result = {};
+        data.forEach(basket => {
+          for (let [key, value] of Object.entries(basket)) {
+            if (result[key]) {
+              result[key] += value;
+            } else {
               result[key] = value;
             }
           }
         });
-        return result; //(7)
+        return result;
       };
-
-
-
 
       return mergeFruits([obj1, obj2])
     },

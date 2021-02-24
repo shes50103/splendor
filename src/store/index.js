@@ -1,5 +1,18 @@
 import { createStore } from 'vuex'
 
+window.groupData = function(data){
+
+  let r = _.groupBy(data, 'value')
+
+  return {
+    green: r['green'] && r['green'].length || 0,
+    red:  r['red'] && r['red'].length || 0,
+    blue:  r['blue'] && r['blue'].length || 0,
+    black: r['black'] && r['black'].length || 0,
+    white: r['white'] && r['white'].length || 0,
+    gold: r['gold'] && r['gold'].length || 0,
+  }
+}
 export default createStore({
   state: {
     cardList: [
@@ -231,29 +244,13 @@ export default createStore({
       return state.pointList.filter( (e) => e.user === 1)
     },
     groupforSalePointList(state, getters){
-      let r = _.groupBy(getters.forSalePointList, 'value')
-
-      return {
-        green: r['green'] && r['green'].length || 0,
-        red: r['red'] && r['red'].length || 0,
-        blue: r['blue'] && r['blue'].length || 0,
-        black: r['black'] && r['black'].length || 0,
-        white: r['white'] && r['white'].length || 0,
-        gold: r['gold'] && r['gold'].length || 0,
-      }
+      return groupData(getters.forSalePointList)
     },
-
     groupMyPointList(state, getters){
-      let r = _.groupBy(getters.myPointList, 'value')
-
-      return {
-        green: r['green'] && r['green'].length || 0,
-        red: r['red'] && r['red'].length || 0,
-        blue: r['blue'] && r['blue'].length || 0,
-        black: r['black'] && r['black'].length || 0,
-        white: r['white'] && r['white'].length || 0,
-        gold: r['gold'] && r['gold'].length || 0,
-      }
+      return groupData(getters.myPointList)
+    },
+    groupMyCardList(state, getters){
+      return groupData(getters.myCardList)
     }
   },
   mutations: {
