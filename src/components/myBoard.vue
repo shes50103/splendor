@@ -1,7 +1,7 @@
 <template>
 <div class="my-board">
   <h1> My board</h1>
-  myCardListPoint: {{myCardListPoint}} <br>
+  groupMyCardList: {{groupMyCardList}} <br>
   myTotalPoint: {{myTotalPoint}}
   <div class="card-list">
     <div :class="card.value" class="card" v-for="card in myCardList">
@@ -19,6 +19,7 @@
 
 <script>
 import myPointStack from './myPointStack.vue'
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -29,31 +30,7 @@ export default {
     myPointStack
   },
   computed: {
-    myCardListPoint() {
-      return this.$store.getters.groupMyCardList
-    },
-    myTotalPoint() {
-      return this.$store.getters.myTotalPoint;
-    },
-    myCardList: {
-      get(){
-        return this.$store.getters.myCardList;
-      },
-      set(value){
-        this.$store.commit('cardList', value);
-      }
-    },
-    myPointLis: {
-      get(){
-        return this.$store.getters.myPointList;
-      },
-      set(value){
-        this.$store.commit('pointList', value);
-      }
-    },
-    groupPoint(){
-      return this.$store.getters.groupMyPointList;
-    }
+    ...mapGetters(['groupMyCardList', 'myTotalPoint', 'myCardList', 'myPointLis']),
   }
 }
 </script>

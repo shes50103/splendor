@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -29,11 +31,7 @@ export default {
   },
   methods: {
     buy(){
-      // console.log("groupMyPointList", this.$store.getters.groupMyPointList)
-      // console.log("groupMyCardList", this.$store.getters.groupMyCardList)
-      // console.log("myTotalPoint", this.$store.getters.myTotalPoint)
       var myPointList = this.$store.getters.myPointList
-      // console.log("myPointList", this.$store.getters.myPointList)
 
       this.cartPointList.forEach((e)=>{
         e.user=1;
@@ -41,7 +39,6 @@ export default {
 
       this.cartCardList.forEach((e)=>{
         e.user=1;
-
 
         for (const [key, value] of Object.entries(e.costs)) {
           console.log("key", key, "value", value)
@@ -56,17 +53,11 @@ export default {
             }
           }
         }
-
       })
     },
   },
   computed: {
-    cartPointList() {
-      return this.$store.getters.cartPointList;
-    },
-    cartCardList() {
-      return this.$store.getters.cartCardList;
-    },
+    ...mapGetters(['cartCardList', 'cartPointList']),
   }
 }
 </script>
