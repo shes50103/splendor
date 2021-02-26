@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import myPointStack from './myPointStack.vue'
+import myPointStack from '../lib/points/myPointStack.vue'
 import { mapGetters } from 'vuex';
 
 export default {

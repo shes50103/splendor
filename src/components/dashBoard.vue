@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import dashPointStack from './dashPointStack.vue'
+import dashPointStack from '../lib/points/dashPointStack.vue'
 import { mapGetters } from 'vuex';
 
 export default {
