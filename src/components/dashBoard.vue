@@ -21,14 +21,15 @@ export default {
     dashPointStack
   },
   methods: {
-    ableBuy(e){
+    ableBuy(card){
       let ableBuy = true;
-      const myTotalPoint_copy = Object.create(this.myTotalPoint)
-      const result  =_.mergeWith(myTotalPoint_copy, e.costs , (objValue, srcValue) => {
-        return objValue - srcValue
-      });
+      const myTotalPointCopy = Object.create(this.myTotalPoint)
 
-      _.forIn(result, (value, key) => {
+      const result  =_.mergeWith(myTotalPointCopy, card.costs , (objValue, srcValue) =>
+        objValue - srcValue
+      );
+
+      _.forIn(result, value => {
         if(value < 0){
           ableBuy = false;
         }
@@ -36,10 +37,10 @@ export default {
 
       return ableBuy;
     },
-    addCardToCart(e){
+    addCardToCart(cardId){
       this.forSaleCardList.forEach((card) => {
-        if(card.id == e && this.ableBuy(card)){
-          card.user = 'cart'
+        if(card.id == cardId && this.ableBuy(card)){
+           this.$store.commit('cardToCart', cardId);
         }
       })
     },

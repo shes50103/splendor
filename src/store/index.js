@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import _ from 'lodash';
 
 export default createStore({
+  // strict: true,
   state: {
     cardList: [
       {
@@ -247,8 +248,8 @@ export default createStore({
     }
   },
   mutations: {
-    cardList(state, payload) {
-      state.cardList = payload;
+    cardToCart(state, payload){
+      state.cardList.filter( (e) => e.id === payload)[0].user = 'cart'
     },
   },
   actions: {
