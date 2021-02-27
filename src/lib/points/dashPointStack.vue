@@ -1,6 +1,6 @@
 <template>
   <div class="point-list bg-light">
-    <template :key="key" v-for="(point, key) in groupPoint">
+    <template :key="key" v-for="(point, key) in groupforSalePointList">
        <component :is="numberToComponent(point)" :color="key" @click="addPointToCart(key)"></component>
     </template>
   </div>
@@ -12,6 +12,7 @@ import p2 from './p2.vue'
 import p3 from './p3.vue'
 import p4 from './p4.vue'
 import p5 from './p5.vue'
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -48,26 +49,16 @@ export default {
       }
     },
     addPointToCart(key){
-      for(let i = 0 ; i< this.pointList.length ;i++ ){
-        if(this.pointList[i].value === key){
-          this.pointList[i].user = 'cart';
+      for(let i = 0 ; i< this.forSalePointList.length ;i++ ){
+        if(this.forSalePointList[i].value === key){
+          this.forSalePointList[i].user = 'cart';
           break;
         }
       }
     }
   },
   computed: {
-    groupPoint(){
-      return this.$store.getters.groupforSalePointList;
-    },
-    pointList: {
-      get(){
-        return this.$store.getters.forSalePointList;
-      },
-      set(value){
-        this.$store.commit('pointList', value);
-      }
-    },
+    ...mapGetters(['forSalePointList', 'groupforSalePointList']),
   }
 }
 </script>
