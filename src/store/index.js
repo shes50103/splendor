@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import _ from 'lodash';
 
 export default createStore({
   state: {
@@ -240,25 +241,9 @@ export default createStore({
       return groupData(getters.myCardList)
     },
     myTotalPoint(state, getters){
-      let obj1 = getters.groupMyPointList
-      let obj2 = getters.groupMyCardList
-
-      const mergeFruits = data => {
-        const result = {};
-        data.forEach(basket => {
-          for (let [key, value] of Object.entries(basket)) {
-            if (result[key]) {
-              result[key] += value;
-            } else {
-              result[key] = value;
-            }
-          }
-        });
-        return result;
-      };
-
-      return mergeFruits([obj1, obj2])
-
+      return _.mergeWith(getters.groupMyPointList, getters.groupMyCardList , (objValue, srcValue) => {
+        return objValue + srcValue
+      });
     }
   },
   mutations: {
