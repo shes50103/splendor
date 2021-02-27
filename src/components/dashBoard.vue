@@ -1,9 +1,6 @@
-
 <template>
-
 <div class="dash-board">
   <h1>For Sale</h1>
-
   <div class="card-list">
     <div :class="card.value" class="card clickable" v-for="card in forSaleCardList" @click="addCardToCart(card.id)">
       <div class="card-cost-list">
@@ -11,7 +8,6 @@
       </div>
     </div>
   </div>
-
   <dashPointStack/>
 </div>
 </template>
@@ -21,46 +17,35 @@ import dashPointStack from '../lib/points/dashPointStack.vue'
 import { mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {
-    }
-  },
   components: {
     dashPointStack
   },
   methods: {
     ableBuy(e){
-      let myTotalPoint = this.$store.getters.myTotalPoint;
+      let ableBuy = true;
+      const myTotalPoint_copy = Object.create(this.myTotalPoint)
+      const result  =_.mergeWith(myTotalPoint_copy, e.costs , (objValue, srcValue) => {
+        return objValue - srcValue
+      });
 
-      for (const [key, value] of Object.entries(e.costs)) {
-        if(myTotalPoint[key] < value){
-          return false;
+      _.forIn(result, (value, key) => {
+        if(value < 0){
+          ableBuy = false;
         }
-      }
+      });
 
-      return true
+      return ableBuy;
     },
     addCardToCart(e){
-      this.cardList = this.$store.state.cardList.map((card) => {
+      this.forSaleCardList.forEach((card) => {
         if(card.id == e && this.ableBuy(card)){
-
           card.user = 'cart'
         }
-        return card
       })
     },
-
-    addPointToCart(key){
-      for(let i = 0 ; i< this.forSalePointList.length ;i++ ){
-        if(this.forSalePointList[i].value === key){
-          this.forSalePointList[i].user = 'cart';
-          break;
-        }
-      }
-    }
   },
   computed: {
-    ...mapGetters(['forSaleCardList', 'forSalePointList']),
+    ...mapGetters(['forSaleCardList', 'forSalePointList', 'myTotalPoint']),
   }
 }
 </script>

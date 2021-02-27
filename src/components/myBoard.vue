@@ -10,9 +10,7 @@
       </div>
     </div>
   </div>
-
   <myPointStack/>
-
 </div>
 
 </template>

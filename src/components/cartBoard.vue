@@ -1,7 +1,6 @@
 <template>
 <div class="cart-board">
   <h1> Cart </h1>
-
   <div class="card-list">
     <div :class="card.value" class="card clickable" v-for="card in cartCardList">
       <div class="card-cost-list">
@@ -10,29 +9,22 @@
       </div>
     </div>
   </div>
-
   <div class="point-list bg-light">
     <div v-for="point in cartPointList" :class="[point.value, {clickable: true}]" class="point">
     </div>
   </div>
-
   <btn class="btn btn-primary" @click="buy">BUY</btn>
 </div>
-
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import _ from 'lodash';
+
 
 export default {
-  data() {
-    return {
-    }
-  },
   methods: {
     buy(){
-      var myPointList = this.$store.getters.myPointList
-
       this.cartPointList.forEach((e)=>{
         e.user=1;
       })
@@ -42,7 +34,8 @@ export default {
 
         for (const [key, value] of Object.entries(e.costs)) {
           console.log("key", key, "value", value)
-          for (let el of myPointList) {
+
+          for (let el of this.myPointList) {
             if (el.value == key) {
               value = value - 1
               el.user = null
@@ -53,18 +46,16 @@ export default {
             }
           }
         }
+
       })
     },
   },
   computed: {
-    ...mapGetters(['cartCardList', 'cartPointList']),
+    ...mapGetters(['cartCardList', 'cartPointList', 'myPointList']),
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
-
-
 </style>
