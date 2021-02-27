@@ -1,6 +1,6 @@
 <template>
   <div class="point-list bg-light">
-    <template  v-for="point, key in groupPoint">
+    <template :key="key" v-for="(point, key) in groupPoint">
        <component :is="numberToComponent(point)" :color="key" @click="addPointToCart(key)"></component>
     </template>
   </div>

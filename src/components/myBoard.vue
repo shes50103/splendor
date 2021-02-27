@@ -4,9 +4,9 @@
   groupMyCardList: {{groupMyCardList}} <br>
   myTotalPoint: {{myTotalPoint}}
   <div class="card-list">
-    <div :class="card.value" class="card" v-for="card in myCardList">
+    <div :class="card.value" class="card" :key="card.id" v-for="card in myCardList">
       <div class="card-cost-list">
-        <div v-for="(value, key) in card.costs" class="card-cost" :class="key">{{value}}</div>
+        <div :key="key" v-for="(value, key) in card.costs" class="card-cost" :class="key">{{value}}</div>
       </div>
     </div>
   </div>

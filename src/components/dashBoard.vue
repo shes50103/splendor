@@ -2,9 +2,9 @@
 <div class="dash-board">
   <h1>For Sale</h1>
   <div class="card-list">
-    <div :class="card.value" class="card clickable" v-for="card in forSaleCardList" @click="addCardToCart(card.id)">
+    <div :class="card.value" class="card clickable" :key="card.id" v-for="card in forSaleCardList" @click="addCardToCart(card.id)">
       <div class="card-cost-list">
-        <div v-for="(value, key) in card.costs" class="card-cost" :class="key" > {{value}}</div>
+        <div :key="key" v-for="(value, key) in card.costs" class="card-cost" :class="key" > {{value}}</div>
       </div>
     </div>
   </div>
