@@ -25,18 +25,17 @@ import _ from 'lodash';
 export default {
   methods: {
     buy(){
-      this.cartPointList.forEach((e)=>{
-        e.user=1;
-      })
+      this.cartPointList.forEach( point => this.$store.commit('pointToUser', point.id))
 
-      this.cartCardList.forEach((e)=>{
-        e.user=1;
-        _.forIn(e.costs, (value, key)=>{
+      this.cartCardList.forEach( card => {
+        this.$store.commit('cardToUser', card.id);
+
+        // Pay for card by point
+        _.forIn(card.costs, (value, key)=>{
           for (let el of this.myPointList) {
             if (el.value == key) {
-
               value = value - 1
-              el.user = null
+              this.$store.commit('pointToDashboard', el.id)
               if(value == 0){
                 break
               }

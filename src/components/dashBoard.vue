@@ -24,8 +24,7 @@ export default {
     ableBuy(card){
       let ableBuy = true;
       const myTotalPointCopy = Object.create(this.myTotalPoint)
-
-      const result  =_.mergeWith(myTotalPointCopy, card.costs , (objValue, srcValue) =>
+      const result  = _.mergeWith(myTotalPointCopy, card.costs , (objValue, srcValue) =>
         objValue - srcValue
       );
 
@@ -40,7 +39,7 @@ export default {
     addCardToCart(cardId){
       this.forSaleCardList.forEach((card) => {
         if(card.id == cardId && this.ableBuy(card)){
-           this.$store.commit('cardToCart', cardId);
+          this.$store.commit('cardToCart', cardId);
         }
       })
     },

@@ -51,7 +51,7 @@ export default {
     addPointToCart(key){
       for(let i = 0 ; i< this.forSalePointList.length ;i++ ){
         if(this.forSalePointList[i].value === key){
-          this.forSalePointList[i].user = 'cart';
+          this.$store.commit('pointToCart', this.forSalePointList[i].id)
           break;
         }
       }
